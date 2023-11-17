@@ -1,27 +1,26 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
 
 export default function App() {
-  const [name, setName] = useState("craig");
-  const [person, setPerson] = useState({ name: "mario", age: 40 });
-
-  const clickHandler = () => {
-    setName("Jabba");
-    setPerson({ name: 'Luigi', age: 30 });
-  };
+  const [people, setPeople] = useState([
+    { name: "shaun", key: "1" }, //key properties are required by React to keep track of items
+    { name: "yoshi", key: "2" },
+    { name: "mario", key: "3" },
+    { name: "luigi", key: "4" },
+    { name: "peach", key: "5" },
+    { name: "toad", key: "6" },
+    { name: "bowser", key: "7" },
+  ]);
 
   return (
     <View style={styles.container}>
-      <Text>My name is {name}</Text>
-      <Text>
-        His name is {person.name} and his age is {person.age}
-      </Text>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="update state"
-          onPress={clickHandler}
-        />
-      </View>
+      <ScrollView>
+        {people.map((person) => (
+          <View key={person.key}>
+            <Text style={styles.person}>{person.name}</Text>
+          </View>
+        ))}
+      </ScrollView>
     </View>
   );
 }
@@ -30,10 +29,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    paddingTop: 40,
+    paddingHorizontal: 20,
+    // alignItems: "center",
+    // justifyContent: "center",
   },
-  buttonContainer: {
-    marginTop: 20,
+  person: {
+    marginTop: 24,
+    padding: 30,
+    backgroundColor: "pink",
+    fontSize: 24,
   },
 });
