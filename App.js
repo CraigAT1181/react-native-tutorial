@@ -1,27 +1,30 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, TextInput } from "react-native";
 
 export default function App() {
   const [name, setName] = useState("craig");
-  const [person, setPerson] = useState({ name: "mario", age: 40 });
-
-  const clickHandler = () => {
-    setName("Jabba");
-    setPerson({ name: 'Luigi', age: 30 });
-  };
+  const [age, setAge] = useState("42");
 
   return (
     <View style={styles.container}>
-      <Text>My name is {name}</Text>
+      <Text>Enter name:</Text>
+      <TextInput
+        multiline
+        style={styles.input}
+        placeholder="e.g. John Doe"
+        onChangeText={(value) => setName(value)}
+      />
+
+      <Text>Enter Age:</Text>
+      <TextInput
+        keyboardType="numeric" //Can't see the effect on web. Need to install Android Simulator.
+        style={styles.input}
+        placeholder="e.g. 35"
+        onChangeText={(value) => setAge(value)}
+      />
       <Text>
-        His name is {person.name} and his age is {person.age}
+        Name: {name}, Age: {age}
       </Text>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="update state"
-          onPress={clickHandler}
-        />
-      </View>
     </View>
   );
 }
@@ -35,5 +38,12 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     marginTop: 20,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "#777",
+    padding: 8,
+    margin: 10,
+    width: 200,
   },
 });
