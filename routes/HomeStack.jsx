@@ -19,7 +19,7 @@ export default function HomeStack() {
         name="Home"
         component={Home}
         options={{
-          header: ({ navigation, route }) => (
+          header: ({ navigation }) => (
             <Header navigation={navigation} title={"Home"} />
           ),
         }}

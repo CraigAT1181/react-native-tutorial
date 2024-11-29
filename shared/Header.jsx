@@ -5,9 +5,13 @@ import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 export default function Header({ navigation, title }) {
   return (
     <View style={styles.header}>
-      <TouchableOpacity onPress={() => navigation.openDrawer()}>
-        <MaterialIcons name="menu" size={32} color="white" />
-      </TouchableOpacity>
+      <MaterialIcons
+        onPress={() => navigation.openDrawer()}
+        name="menu"
+        size={32}
+        color="white"
+        style={styles.icon}
+      />
 
       <Text style={styles.headerText}>{title}</Text>
     </View>
@@ -20,7 +24,7 @@ const styles = StyleSheet.create({
     height: 60,
     flexDirection: "row",
     alignItems: "center",
-
+    justifyContent: "center",
     backgroundColor: "#333",
     paddingHorizontal: 15,
   },
@@ -28,6 +32,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
     color: "white",
-    marginLeft: 40,
+    letterSpacing: 1,
+  },
+  icon: {
+    position: "absolute",
+    left: 16,
   },
 });
