@@ -10,7 +10,7 @@ export default function Layout() {
   return (
     <Stack.Navigator initialRouteName="Home">
       <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="ReviewDetails" component={ReviewDetails} />
+      <Stack.Screen name="Review Details" component={ReviewDetails} />
     </Stack.Navigator>
   );
 }
