@@ -1,6 +1,6 @@
 import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, Image } from "react-native";
 
 export default function Header({ navigation, title }) {
   return (
@@ -12,8 +12,13 @@ export default function Header({ navigation, title }) {
         color="white"
         style={styles.icon}
       />
-
-      <Text style={styles.headerText}>{title}</Text>
+      <View style={styles.headerTitle}>
+        <Text style={styles.headerText}>{title}</Text>
+        <Image
+          source={require("../assets/heart_logo.png")}
+          style={styles.headerImage}
+        />
+      </View>
     </View>
   );
 }
@@ -37,5 +42,12 @@ const styles = StyleSheet.create({
   icon: {
     position: "absolute",
     left: 16,
+  },
+  headerImage: {
+    width: 26,
+    height: 26,
+  },
+  headerTitle: {
+    flexDirection: "row",
   },
 });
