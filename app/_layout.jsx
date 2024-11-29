@@ -1,16 +1,15 @@
-// /app/_layout.jsx
 import React from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Home from "./screens/home";
-import ReviewDetails from "./screens/reviewDetails";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import HomeStack from "../routes/HomeStack";
+import AboutStack from "../routes/AboutStack";
 
-const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function Layout() {
   return (
-    <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Review Details" component={ReviewDetails} />
-    </Stack.Navigator>
+    <Drawer.Navigator screenOptions={{ headerShown: false }}>
+      <Drawer.Screen name="Home" component={HomeStack} />
+      <Drawer.Screen name="About" component={AboutStack} />
+    </Drawer.Navigator>
   );
 }
